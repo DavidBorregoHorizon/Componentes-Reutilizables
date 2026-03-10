@@ -1,0 +1,9 @@
+/* Capitalizar primera letra de los días de la semana */
+.fc .fc-col-header-cell-cushion {
+    text-transform: capitalize;
+}
+
+/* Cursor de manita y tooltip al pasar sobre un evento */
+.fc-event {
+    cursor: pointer;
+}
