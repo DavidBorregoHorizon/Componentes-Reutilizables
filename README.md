@@ -24,7 +24,7 @@ Cada subcarpeta es un proyecto SFDX completo con su propio `sfdx-project.json` y
 
 | Componente | Descripción | API Version |
 |---|---|---|
-| *(próximamente)* | | |
+| [sf-calendar](./sf-calendar/) | Calendario visual (FullCalendar V4) configurable para cualquier objeto estándar o personalizado. Sin código, listo para el App Builder. | 55.0 |
 
 ## Cómo usar un componente
 
