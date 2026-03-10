@@ -9,6 +9,11 @@ export default class Calendar extends LightningElement {
      calendarLabel = ''
      calendar
      initialized = false
+     _moveTooltip = (e) => {
+          const tooltip = this.refs.tooltip;
+          tooltip.style.left = (e.clientX + 14) + 'px';
+          tooltip.style.top  = (e.clientY + 14) + 'px';
+     }
 
      connectedCallback() {
           // this.addEventListener('fceventclick', this.handleEventClick.bind(this));
@@ -103,9 +108,15 @@ export default class Calendar extends LightningElement {
                // },
                eventDrop: info => { console.log('event drag start', info) },
                eventClick: info => { this.event('fceventclick', info) },
-               eventMouseEnter: info => {console.log("mouse enter", info) },
-               eventDidMount: info => {
-                    info.el.setAttribute('title', info.event.title);
+               eventMouseEnter: info => {
+                    const tooltip = this.refs.tooltip;
+                    tooltip.textContent = info.event.title;
+                    tooltip.classList.add('visible');
+                    document.addEventListener('mousemove', this._moveTooltip);
+               },
+               eventMouseLeave: () => {
+                    this.refs.tooltip.classList.remove('visible');
+                    document.removeEventListener('mousemove', this._moveTooltip);
                },
                dateClick: info => { this.event('fcdateclick', info) },
           });

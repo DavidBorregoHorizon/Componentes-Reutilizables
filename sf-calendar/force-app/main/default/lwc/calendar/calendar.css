@@ -1,9 +1,18 @@
-/* Capitalizar primera letra de los días de la semana */
-.fc .fc-col-header-cell-cushion {
-    text-transform: capitalize;
+.fc-tooltip {
+    display: none;
+    position: fixed;
+    background: #222;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    pointer-events: none;
+    z-index: 9999;
+    max-width: 250px;
+    white-space: normal;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
-/* Cursor de manita y tooltip al pasar sobre un evento */
-.fc-event {
-    cursor: pointer;
+.fc-tooltip.visible {
+    display: block;
 }
