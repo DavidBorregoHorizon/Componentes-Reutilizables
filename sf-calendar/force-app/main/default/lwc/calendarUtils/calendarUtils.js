@@ -13,7 +13,7 @@
  *              Las propiedades originales del sObject se conservan en el objeto,
  *              por lo que siguen accesibles en extendedProps al hacer clic.
  *
- * @param {Array}  events  Registros devueltos por CustomCalendarHelper.getEvents
+ * @param {Array}  events  Registros devueltos por CustomCalendarController.getEvents
  * @param {Object} config  Configuración del componente (nombres de campos, etc.)
  * @returns {Array} Eventos listos para FullCalendar
  */

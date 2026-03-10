@@ -1,9 +1,9 @@
 @isTest
-public with sharing class CustomCalendarHelperTest {
-    
+public with sharing class CustomCalendarControllerTest {
+
     @TestSetup
     private static void makeData(){
-        
+
         Account account = new Account();
             account.Name    = 'Efford';
             account.Website = 'https://github.com/effordDev';
@@ -20,7 +20,7 @@ public with sharing class CustomCalendarHelperTest {
 
     @isTest
     private static void getEventsTest(){
-        List<sObject> sobs = CustomCalendarHelper.getEvents(
+        List<sObject> sobs = CustomCalendarController.getEvents(
             [SELECT Id FROM Account LIMIT 1].Id,
             'Event',
             'WhatId',

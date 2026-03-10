@@ -6,7 +6,7 @@
  *              Se invoca de forma imperativa desde customCalendar.js cada vez
  *              que el usuario navega entre meses/semanas en el calendario.
  */
-public with sharing class CustomCalendarHelper {
+public with sharing class CustomCalendarController {
 
     /**
      * @description Devuelve los registros del objeto hijo que pertenecen al
@@ -56,7 +56,7 @@ public with sharing class CustomCalendarHelper {
         query += ' AND '   + startDatetimeField + ' >= :startDateTime';
         query += ' AND '   + endDatetimeField   + ' <= :endDateTime';
 
-        System.debug('CustomCalendarHelper query: ' + query);
+        System.debug('CustomCalendarController query: ' + query);
         return Database.query(query);
     }
 }

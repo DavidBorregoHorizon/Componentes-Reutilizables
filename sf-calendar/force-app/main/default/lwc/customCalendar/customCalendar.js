@@ -13,7 +13,7 @@ import { NavigationMixin } from 'lightning/navigation'
 import { subscribe } from 'lightning/empApi'
 import { encodeDefaultFieldValues } from 'lightning/pageReferenceUtils'
 import Id from '@salesforce/user/Id'
-import getEvents from "@salesforce/apex/CustomCalendarHelper.getEvents"
+import getEvents from "@salesforce/apex/CustomCalendarController.getEvents"
 import { formatEvents } from "c/calendarUtils"
 
 export default class CustomCalendar extends NavigationMixin(LightningElement) {

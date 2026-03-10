@@ -22,9 +22,17 @@ Componente LWC que muestra cualquier objeto de Salesforce en formato de calendar
 
 ## 🚀 Despliegue
 
-Desde la carpeta `sf-calendar/`, ejecuta:
+**Opción A — Deploy con un clic (recomendado)**
+
+Haz clic en el botón para desplegar directamente desde GitHub a tu org:
+
+[![Deploy to Salesforce](https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png)](https://githubsfdeploy.herokuapp.com?owner=DavidBorregoHorizon&repo=Componentes-reutilizables&subfolder=sf-calendar)
+
+**Opción B — Deploy manual con Salesforce CLI**
 
 ```bash
+git clone https://github.com/DavidBorregoHorizon/Componentes-reutilizables.git
+cd Componentes-reutilizables/sf-calendar
 sf project deploy start --source-dir force-app --target-org <alias-de-tu-org>
 ```
 
@@ -125,8 +133,8 @@ Calendar_Refresh__e
 
 | Clase | Descripción |
 |---|---|
-| `CustomCalendarHelper` | Ejecuta la consulta SOQL dinámica para obtener los eventos del rango visible |
-| `CustomCalendarHelperTest` | Tests unitarios de `CustomCalendarHelper` |
+| `CustomCalendarController` | Ejecuta la consulta SOQL dinámica para obtener los eventos del rango visible |
+| `CustomCalendarControllerTest` | Tests unitarios de `CustomCalendarController` |
 | `CustomPicklist` | Rellena el desplegable "Objeto relacionado" en App Builder |
 | `CustomPicklistTest` | Tests unitarios de `CustomPicklist` |
 
@@ -143,7 +151,7 @@ App Builder config (@api props)
         ↓
   customCalendar.js
         ↓ llamada imperativa a Apex
-  CustomCalendarHelper.cls  ←→  Salesforce DB
+  CustomCalendarController.cls  ←→  Salesforce DB
         ↓ sObjects
   calendarUtils.js (formatEvents)
         ↓ eventos formateados { id, title, start, end }
