@@ -2,7 +2,8 @@ import { api, LightningElement } from 'lwc';
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import fullCalendar from "@salesforce/resourceUrl/fullCalendar";
 import { loadStyle, loadScript } from "lightning/platformResourceLoader";
-import { jsToApexDate } from 'c/calendarUtils'
+import { jsToApexDate } from 'c/calendarUtils';
+import LANG from '@salesforce/i18n/lang';
 export default class Calendar extends LightningElement {
 
      calendarLabel = ''
@@ -41,8 +42,23 @@ export default class Calendar extends LightningElement {
                     loadScript(this, fullCalendar + "/packages/moment-timezone/main.js"),
                ])
                
+               // cargar locale si no es inglés
+               const locale = (LANG || 'en').toLowerCase();
+               if (!locale.startsWith('en')) {
+                    try {
+                         await loadScript(this, fullCalendar + "/packages/core/locales/" + locale + ".js");
+                    } catch (e) {
+                         const baseLang = locale.split('-')[0];
+                         if (baseLang !== locale) {
+                              try {
+                                   await loadScript(this, fullCalendar + "/packages/core/locales/" + baseLang + ".js");
+                              } catch (e2) { /* locale no disponible, usa inglés */ }
+                         }
+                    }
+               }
+
                //create calendar and render
-               this.init()
+               this.init(locale)
 
           } catch (error) {
          
@@ -56,11 +72,12 @@ export default class Calendar extends LightningElement {
           }
      }
 
-     init() {
+     init(locale = 'en') {
           const calendarEl = this.template.querySelector(".calendar")
 
           this.calendar = new FullCalendar.Calendar(calendarEl, {
                plugins: ["dayGridMonth","dayGrid", "timeGrid", "list","interaction","moment"],
+               locale: locale,
                views: {
                     listDay: { buttonText: "list day" },
                     listWeek: { buttonText: "list week" },
