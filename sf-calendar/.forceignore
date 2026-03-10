@@ -1,0 +1,6 @@
+# Ignorar archivos de test Jest - no son desplegables en Salesforce
+**/__tests__/**
+
+# Ignorar archivos de configuración local
+.sfdx
+.sf
